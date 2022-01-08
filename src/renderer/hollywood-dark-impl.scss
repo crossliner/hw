@@ -34,6 +34,10 @@
 
 .ux_textbox_label {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
 }
 
 .ux_textbox_container {
@@ -112,6 +116,10 @@
 
 .ux_slider_label, .ux_slider_preview {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
 }
 
 .ux_slider_control {
@@ -121,15 +129,24 @@
 }
 
 .ux_dropdown_control {
-	select {
+	.selector {
 		color: $ux-dropdown-text;
 		background-color: $ux-dropdown-bg;
 		box-shadow: $ux-dropdown-shadow;
+
+		.list {
+			background-color: $ux-dropdown-bg;
+			box-shadow: $ux-dropdown-shadow;
+		}
 	}
 }
 
 .ux_dropdown_label {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
 }
 
 .ux_context {
@@ -138,7 +155,7 @@
 	box-shadow: $ux-context-shadow;
 	
 	.entry:hover {
-		background-color: adjust-color($ux-context-bg, $lightness: 40%);
+		opacity: 100%;
 	}
 }
 
@@ -237,7 +254,7 @@
 	}
 
 	&.selected {
-		background-color: $ui-ban-bg;
+		background-color: transparent;
 
 		.iconify {
 			color: $ui-nav-ico-sel;
@@ -324,15 +341,19 @@
 	background-color: $ui-nav-bg;
 }
 
-#login_screen, #captcha_screen {
-	background-color: $ui-ban-bg;
+#console_output {
+	background-color: adjust-color($ui-nav-bg, $lightness: -5%);
+}
+
+#captcha_screen {
+	background-color: transparent;
 }
 
 #login_buttons .ux_button {
 	background-color: $ui-login-ctl-bg;
 }
 
-#username_box .ux_textbox_container, #password_box .ux_textbox_container, #r_email_box .ux_textbox_container, #r_license_box .ux_textbox_container, #r_license_codon0, #r_license_codon1, #r_license_codon2, #r_license_codon3, #r_license_codon4 {
+#username_box .ux_textbox_container, #password_box .ux_textbox_container, #r_email_box .ux_textbox_container, #r_license_box .ux_textbox_container, #passwordconfirm_box .ux_textbox_container, #r_license_codon0, #r_license_codon1, #r_license_codon2, #r_license_codon3, #r_license_codon4 {
 	background-color: $ui-login-ctl-bg;
 }
 
@@ -467,7 +488,7 @@ a {
 .notification {
 	&.info { background-color: $color-primary; }
 	&.success { background-color: $color-success; }
-	&.warning { background-color: $color-warning; color: #343a40; }
+	&.warning { background-color: $color-warning; color: #222324; }
 	&.danger { background-color: $color-danger; }
 }
 
@@ -628,22 +649,22 @@ a {
 }
 
 .ux-uisettings-list {
-	background-color: $ux-button-bg;
+	background-color: $ux-uisettings-bar;
 	
 	.entry-label {
 		background-color: $ux-textbox-bg;
 	}
 
 	.entry {
-		color: rgba(255, 255, 255, 50%);
+		color: $ux-uisettings-entry-text;
 
 		&:hover {
-			color: rgb(255, 255, 255);
+			color: $ux-uisettings-entry-text-hover;
 		}
 
 		&.select {
-			color: black;
-			background-color: skyblue;
+			color: $ux-uisettings-entry-text-select;
+			background-color: $ux-uisettings-entry-bg-select;
 		}
 	}
 }

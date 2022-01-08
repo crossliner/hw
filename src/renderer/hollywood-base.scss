@@ -242,7 +242,9 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 
 	position: absolute;
 	width: 100%;
-	height: calc(100% - 35px);
+	height: 100%;
+	top: 0;
+	left: 0;
 	font-family: $ux-font;
 	background-color: rgba(0,0,0,0.5);
 
@@ -298,7 +300,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	pointer-events: none;
+	pointer-events: all;
 
 	width: 250px;
 	height: 35px;
@@ -310,7 +312,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	
 	border-radius: 4px;
 
-	&.hide { opacity: 0; }
+	&.hide { 
+		opacity: 0;
+		pointer-events: none;
+	}
 
 	.title {
 		display: flex;
@@ -345,6 +350,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	font-size: 12px;
 	margin-left: 5px;
 	margin-bottom: 5px;
+
+	.description {
+		font-size: 0.77em;
+	}
 }
 
 .ux_textbox_container {
@@ -417,24 +426,16 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding-bottom: 30px;
-
-	height: 20px;
 }
 
 .ux_checkbox_check {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 20px;
-	height: 100%;
+	width: 1.5em;
+	height: 1.5em;
 	border-radius: 4px;
 	cursor: pointer;
-
-	.iconify {
-		height: 70%;
-		width: 70%;
-	}
 }
 
 .ux_checkbox_label {
@@ -452,9 +453,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
 	opacity: 0.7;
-	width: 100%;
 	transition: opacity .2s;
-	padding-bottom: 30px;
 
 	&:hover {
 		opacity: 1;
@@ -465,6 +464,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	font-size: 14px;
 	margin-left: 5px;
 	margin-bottom: 5px;
+
+	.description {
+		font-size: 0.77em;
+	}
 }
 
 .ux_slider_contents {
@@ -474,7 +477,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
 .ux_slider_control {
-	-webkit-appearance: none;
+	//-webkit-appearance: none;
 	width: 100%;
 	height: 5px;
 	flex-grow: 2;
@@ -492,17 +495,59 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
 .ux_dropdown_control {
-	width: 100%;
-	padding-bottom: 30px;
+	//width: 100%;
 
-	select {
-		width: 100%;
-		border: none;
-		height: 30px;
-		padding-left: 10px;
-		padding-right: 10px;
+	.selector {
+		display: flex;
+		position: relative;
+		align-items: center;
+		padding: 0.5em;
 		border-radius: 4px;
-		transition: 0.3s;
+
+		.item {
+			flex-grow: 2;
+		}
+
+		.iconify {
+			margin-left: auto;
+		}
+
+		.list {
+			position: absolute;
+			display: none;
+			flex-direction: column;
+			border-radius: 4px;
+			left: 0em;
+			width: 100%;
+			max-height: 20em;
+			overflow-y: scroll;
+			z-index: 50; //:atroll:
+
+			&.show {
+				display: flex;
+			}
+
+			.category {
+				font-weight: bold;
+				font-size: 1.2em;
+				padding: 0.5em;
+			}
+
+			.entry {
+				padding: 0.5em;
+
+				&.disabled {
+					filter: grayscale(100%);
+					opacity: 50%;
+					pointer-events: none;
+				}
+
+				&:hover {
+					cursor: pointer;
+					background-color: rgba(0, 0, 0, 30%);
+				}
+			}
+		}
 	}
 }
 
@@ -510,6 +555,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	font-size: 14px;
 	margin-left: 5px;
 	margin-bottom: 5px;
+
+	.description {
+		font-size: 0.77em;
+	}
 }
 
 @keyframes append-show {
@@ -521,7 +570,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	opacity: 0;
 	font-family: $ux-font;
 	flex-direction: column;
-	//width: 100px; /* idk for now */
+	min-width: 160px; /* idk for now */
 	position: absolute;
 	border-radius: 8px;
 	user-select: none;
@@ -530,6 +579,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	transition: 0.1s opacity;
 	animation: append-show .1s linear;
 	white-space: nowrap;
+	z-index: 200;
 
 	&.show {
 		opacity: 1;
@@ -549,7 +599,8 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		margin-right: 5px;
 		*/
 		height: 30px; /* idk for now */
-		transition: 0.3s background-color;
+		transition: 0.3s opacity;
+		opacity: 50%;
 
 		.iconify {
 			height: 80%;
@@ -618,6 +669,14 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			gap: 1em;
 			padding: 1em;
 		}
+
+		.img {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			padding: 1em;
+			align-items: center;
+		}
 	
 		.actions {
 			display: flex;
@@ -634,7 +693,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		}
 
 		.ux_textbox_container {
-			margin-right: 2em; // troll fix
+			//margin-right: 2em; // troll fix
 		}
 	}
 }
@@ -659,13 +718,13 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		position: absolute;
 		z-index: 20;
 
-		#ban_middle {
+		#ban_middle, #ban_middle_classic {
 			display: none;
 		}
 	}
 }
 
-#ban_middle {
+#ban_middle, #ban_middle_classic {
 	display: flex;
 	align-items: center;
 	margin-left: 10px;
@@ -675,6 +734,11 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		position: absolute;
 		justify-content: center;
 	}
+}
+
+#ban_middle_classic {
+	font-family: $ux-font;
+	color: white;
 }
 
 #ban_logo {
@@ -705,7 +769,6 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	justify-content: space-around;
 	margin-left: auto;
 	height: 100%;
-	width: 135px;
 	-webkit-app-region: no-drag;
 	z-index: 200;
 }
@@ -715,7 +778,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-grow: 1;
+	width: 2.2em;
 	height: 100%;
 	transition: 0.2s background-color;
 }
@@ -914,7 +977,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		margin-top: 5px;
 		width: fit-content;
 		white-space: nowrap;
-		z-index: 100;
+		z-index: 200;
 
 		.iconify {
 			height: 100%;
@@ -1239,6 +1302,16 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	width: 100%;
 	padding: 5px;
 	gap: 5px;
+
+	&.compact {
+		gap: 0px;
+		padding: 0px;
+
+		.ux_interface_tab {
+			border-radius: 0px;
+			height: unset;
+		}
+	}
 }
 
 #ux_interface_add_tab {
@@ -1269,6 +1342,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 
 	&.selected {
 		box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+
+		.ux_interface_tab_caption {
+			opacity: 100%;
+		}
 	}
 
 	&.sortable-ghost {
@@ -1326,6 +1403,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	white-space: nowrap;
   	overflow: hidden;
   	text-overflow: ellipsis;
+	opacity: 40%;
 }
 
 .ux_interface_tab_close {
@@ -1427,7 +1505,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			flex-direction: column;
 			justify-content: center;
 			width: 100%;
-			height: 25px;
+			min-height: 25px;
 			padding-left: 0.3em;
 			overflow: hidden;
 
@@ -1444,7 +1522,8 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			}
 
 			.author {
-				font-size: 0.8em;
+				font-size: 0.7em;
+				font-style: italic;
 			}
 
 			
@@ -1466,6 +1545,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	width: 100%;
 	margin: 5px;
+
+	#savef_button {
+		margin-right: 0;
+	}
 
 	&.flip {
 		flex-direction: row-reverse;
@@ -1514,21 +1597,21 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	}
 }
 
-#omega_wrapper, #console_wrapper, #tree_wrapper {
+#omega_wrapper, #console_wrapper, #changelog-show {
 	display: flex;
 	align-items: center;
 	transition: transform 0.1s;
+
+	.iconify {
+		height: 80%;
+		width: 28px;
+		max-width: 28px;
+		border-radius: 10px;
+		cursor: pointer;
+	}
 }
 
-#omega_select, #console_select, #tree_select {
-	height: 80%;
-	width: 28px;
-	max-width: 28px;
-	border-radius: 10px;
-	cursor: pointer;
-}
-
-#omega_wrapper:active, #console_wrapper:active, #tree_wrapper {
+#omega_wrapper:active, #console_wrapper:active, #changelog-show:active {
 	transform: scale(0.8);
 }
 
@@ -1562,7 +1645,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 35px);
 }
 
 #console_output {
@@ -1658,23 +1741,39 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 /* ================================================== */
 
 .ux-uisettings-list {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 25%;
-	padding: 0.5em;
-	gap: 0.3em;
+	//padding: 0.5em;
+	//gap: 0.3em;
 	overflow-y: scroll;
+	box-shadow: 1px 0px 8px rgb(0 0 0 / 50%);
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	#settings-search {
+		/*
+		position: absolute;
+		top: calc(100% - 2.5em);
+		margin: 0.3em;
+		width: calc(100% - 0.5em);
+		*/
+	}
 
 	.entry-label {
 		padding: 0.5em;
-		border-radius: 4px;
 	}
 
 	.entry {
 		padding: 0.7em;
 		cursor: pointer;
-		transition: 0.3s color;
-		border-radius: 4px;
+
+		&:hover {
+			transition: 0.3s color;
+		}
 
 		&.select {
 			transition: none;
@@ -1685,22 +1784,29 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 .ux-uisettings-pages {
 	flex-grow: 2;
 	overflow-y: scroll;
-	padding-right: 0.5em;
 
 	.category-label {
 		padding: 0.5em;
 		display: flex;
 		align-items: center;
 		font-size: 1.2em;
-		margin-bottom: 1em;
-		border-radius: 4px;
+		//margin-bottom: 1em;
+		//margin-top: 1em;
 	}
 
 	.page {
 		display: flex;
 		flex-direction: column;
 		padding-bottom: 1em;
-		gap: 5px;
+		//gap: 1.5em;
+
+		& > * {
+			padding: 0.5em 1.5em 0.5em 1.5em;
+		}
+
+		& > div:nth-child(even) {
+			background-color: rgba(0, 0, 0, 0.08);
+		}
 	}
 }
 
@@ -1736,6 +1842,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			.name {
 				font-weight: bold;
 			}
+		}
+
+		&.hide {
+			display: none;
 		}
 
 		.cosmetic {
@@ -1916,10 +2026,14 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 /* ================================================== */
 
 #theme-options {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	width: 100%;
-	padding-bottom: 2em;
+	
+	&.show {
+		display: flex;
+		padding-bottom: 2em;
+	}
 
 	.option {
 		display: flex;
@@ -2054,7 +2168,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	font-family: $ux-font;
 	user-select: none;
 	top: 0;
-	transition: top 0.5s ease-out;
+	transition: transform 0.5s ease-out;
 }
 
 #captcha_screen {
@@ -2071,7 +2185,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
 #login_screen.logged  {
-	top: 100%;
+	transform: translateY(100%);
 }
 
 #captcha_screen {
@@ -2079,8 +2193,8 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
 #captcha_screen webview {
-	width: 50%;
-	height: 90%;
+	width: 100%;
+	height: 100%;
 }
 
 #registration_inputs {
@@ -2096,7 +2210,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
 #registration_inputs.show {
-	max-height: 75px;
+	max-height: 125px;
 }
 
 
@@ -2115,7 +2229,6 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 
 	width: 40%;
 	min-height: 300px;
-	height: 70%;
 	background-color: transparent;
 	overflow: auto;
 	transition: 0.5s;
@@ -2177,7 +2290,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	color: white;
 }
 
-#username_box, #password_box, #r_email_box, #r_license_box {
+#username_box, #password_box, #r_email_box, #r_license_box, #passwordconfirm_box {
 	max-width: 65%;
 }
 
@@ -2548,6 +2661,10 @@ $v3rm-font: 'Open Sans';
 	}
 }
 
+#logout-button {
+	color: #cd1818;
+}
+
 /* --- HTML TAGS --- */
 /* ================================================== */
 
@@ -2580,6 +2697,7 @@ a {
 
 a:hover {
 	text-decoration-style: solid;
+	cursor: pointer;
 }
 
 h1 {
