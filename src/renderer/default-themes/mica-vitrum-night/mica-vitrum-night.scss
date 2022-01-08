@@ -1,0 +1,16 @@
+
+#syn_app, #ban_bar {
+    background: transparent;
+}
+
+.ux-uisettings-list {
+    background-color: rgba(0, 0, 0, 50%);
+}
+
+.monaco-editor, .monaco-editor-background {
+    background-color: transparent !important;
+
+    .margin {
+        background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+}
