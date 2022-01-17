@@ -16,6 +16,10 @@
 
 .ux_textbox_label {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
 }
 
 .ux_textbox_container {
@@ -94,6 +98,10 @@
 
 .ux_slider_label, .ux_slider_preview {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
 }
 
 .ux_slider_control {
@@ -117,6 +125,29 @@
 
 .ux_dropdown_label {
 	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
+}
+
+.tree {
+	.node {
+		.contents {
+			opacity: 60%;
+			transition: 0.3s opacity;
+
+			&:hover {
+				opacity: 100%;
+				background-color: rgba(255, 255, 255, 20%);
+			}
+
+			&:active {
+				transition: none;
+				opacity: 60%;
+			}
+		}
+	}
 }
 
 .ux_context {
@@ -186,7 +217,7 @@
 			}
 
 			&.selected {
-				background-color: transparent;
+				background-color: $ui-nav-bg-sel;
 			}
 		}
 	}
@@ -323,7 +354,7 @@
 	background-color: $ui-login-ctl-bg;
 }
 
-#username_box .ux_textbox_container, #password_box .ux_textbox_container, #r_email_box .ux_textbox_container, #r_license_box .ux_textbox_container, #r_license_codon0, #r_license_codon1, #r_license_codon2, #r_license_codon3, #r_license_codon4 {
+#username_box .ux_textbox_container, #password_box .ux_textbox_container, #r_email_box .ux_textbox_container, #r_license_box .ux_textbox_container, #passwordconfirm_box .ux_textbox_container, #r_license_codon0, #r_license_codon1, #r_license_codon2, #r_license_codon3, #r_license_codon4 {
 	background-color: $ui-login-ctl-bg;
 }
 
@@ -627,14 +658,38 @@ a {
 
 	.entry {
 		color: $ux-uisettings-entry-text;
+		position: relative;
+
+		&::after {
+			position: absolute;
+			display: block;
+			transition: 0.3s height, 0.3s top;
+			
+			left: 0%;
+			top: 50%;
+			height: 0%;
+			width: 4px;
+			border-radius: 4px;
+
+			background-color: $ux-uisettings-entry-bg-select;
+			content: '';
+		}
 
 		&:hover {
-			color: $ux-uisettings-entry-text-hover;
+			background-color: rgba(255,255,255,5%);
 		}
 
 		&.select {
-			color: $ux-uisettings-entry-text-select;
-			background-color: $ux-uisettings-entry-bg-select;
+			background-color: rgba(255,255,255,5%);
+
+			.iconify {
+				color: $ux-uisettings-entry-bg-select;
+			}
+
+			&::after {
+				height: 50%;
+				top: 25%;
+			}
 		}
 	}
 }

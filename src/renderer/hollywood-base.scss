@@ -146,10 +146,13 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			width: 100%;
 
 			#update_text_left {
+				font-size: 0.8em;
 				// for reference purposes
 			}
 
 			#update_text_right {
+				font-size: 0.8em;
+				opacity: 50%;
 				margin-left: auto;
 			}
 		}
@@ -561,6 +564,50 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	}
 }
 
+.tree {
+	display: flex;
+	flex-direction: column;
+
+	.node {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		min-height: 25px;
+		padding-left: 0.3em;
+		overflow: hidden;
+
+		.contents {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			overflow: hidden;
+			white-space: nowrap;
+			transition: text-indent 1s ease;
+			height: 25px;
+
+			.iconify {
+				min-width: 1em;
+				margin-right: 0.5em;
+			}
+		}
+
+		.children {
+			display: flex;
+			flex-direction: column;
+			max-height: 0px;
+
+			&.show {
+				//max-height: fit-content;
+			}
+		}
+		
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
 @keyframes append-show {
 	from { opacity: 0 };
 	to { opacity: 1 };
@@ -885,7 +932,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	user-select: none;
 	justify-content: center;
-	border-radius: 4px;
+	//border-radius: 4px;
 	-webkit-app-region: no-drag;
 
 	// default position
@@ -1325,6 +1372,16 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	transition: 0.3s background-color;
 }
 
+@keyframes tab-insert {
+	0% { min-width: 0px; max-width: 0; }
+	100% { min-width: 150px; max-width: 300px; }
+}
+
+@keyframes tab-remove {
+	0% { min-width: 150px; max-width: 300; }
+	100% { min-width: 0px; max-width: 0px; }
+}
+
 .ux_interface_tab {
 	display: flex;
     position: relative;
@@ -1332,13 +1389,19 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	justify-content: space-between;
 	align-items: center;
 	overflow: hidden;
-	white-space: nowrap;
-	min-width: 150px;
-	max-width: 300px;
+	width: 150px;
 	height: 2em;
 	cursor: pointer;
     border-radius: 5px;
 	transition: 0.2s background-color;
+
+	&.insert-animation {
+		animation: tab-insert 167ms cubic-bezier(0,0,0,1) 1 normal forwards;
+	}
+
+	&.remove-animation {
+		animation: tab-remove 167ms cubic-bezier(0,0,0,1) 1 normal forwards;
+	}
 
 	&.selected {
 		box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
@@ -1450,7 +1513,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
     border-right-style: solid;
 
 	box-sizing: border-box;
-	width: 80%;
+	width: 0%;
 	flex-grow: 2;
 	height: 100%;
 }
@@ -1466,6 +1529,17 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: 180px;
+	max-width: 280px;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 4px;
+		height: 100%;
+		cursor: ew-resize;
+	}
 
 	.editor-sidebar-category {
 		display: flex;
@@ -1635,51 +1709,72 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	margin-left: auto;
 }
 
-/* --- CONSOLE --- */
-/* Console is non-customizable for accessibility purposes. */
-/* ================================================== */
+/* console */
 
-#console_window {
-	color: white;
-	font-family: $ux-font;
+#console-container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: calc(100% - 35px);
-}
-
-#console_output {
-	display: flex;
-	flex-direction: column;
-	overflow-x: hidden;
-	overflow-y: auto;
-	flex-grow: 2;
-}
-
-#console_actions {
 	user-select: none;
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	padding: 5px;
-}
-
-.console_msg {
-	font-family: 'Ubuntu Mono', monospace;
-	user-select: text;
-	display: flex;
-	align-items: center;
-	gap: 5px;
+	font-family: $ux-font;
 	width: 100%;
-	height: fit-content;
+	height: 200px;
+	//max-height: 400px;
 
-	&.hide {
-		display: none;
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		cursor: n-resize;
 	}
 
-	.console_counter {
-		font-size: 12px;
-		border-radius: 4px;
+	.actions {
+		color: white;
+		display: flex;
+		align-items: center;
+
+		.action {
+			display: flex;
+			padding: 0.5em;
+			font-size: 1.5em;
+			justify-content: center;
+			align-items: center;
+			opacity: 50%;
+
+			&:hover {
+				opacity: 100%;
+				cursor: pointer;
+			}
+		}
+
+		box-shadow: 0px 5px 5px #00000042;
+	}
+
+	.messages {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 2;
+		gap: 0.3em;
+		padding: 0.3em;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.log {
+			display: flex;
+			width: 100%;
+			gap: 1em;
+			padding-left: 0.3em;
+
+			.time {
+				color: white;
+				opacity: 30%;
+			}
+
+			.contents {
+				user-select: text;
+			}
+		}
 	}
 }
 
@@ -1768,15 +1863,16 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	}
 
 	.entry {
-		padding: 0.7em;
-		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
 
-		&:hover {
-			transition: 0.3s color;
-		}
+		margin: 0.2em;
+		padding: 0.5em;
+		border-radius: 4px;
 
-		&.select {
-			transition: none;
+		&:active {
+			opacity: 70%;
 		}
 	}
 }
@@ -1800,6 +1896,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		padding-bottom: 1em;
 		//gap: 1.5em;
 
+		.ux_textbox {
+			width: unset;
+		}
+
 		& > * {
 			padding: 0.5em 1.5em 0.5em 1.5em;
 		}
@@ -1807,6 +1907,27 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		& > div:nth-child(even) {
 			background-color: rgba(0, 0, 0, 0.08);
 		}
+	}
+}
+
+.action-container {
+	display: flex;
+	align-items: center;
+	padding: 0.5em;
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		font-size: 14px;
+
+		.description {
+			font-size: 0.77em;
+			opacity: 50%;
+		}
+	}
+
+	.ux_button {
+		margin-left: auto;
 	}
 }
 

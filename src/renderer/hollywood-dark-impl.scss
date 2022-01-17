@@ -149,6 +149,25 @@
 	}
 }
 
+.tree {
+	.node {
+		.contents {
+			opacity: 60%;
+			transition: 0.3s opacity;
+
+			&:hover {
+				opacity: 100%;
+				background-color: rgba(255, 255, 255, 20%);
+			}
+
+			&:active {
+				transition: none;
+				opacity: 60%;
+			}
+		}
+	}
+}
+
 .ux_context {
 	background-color: $ux-context-bg;
 	color: $ux-context-text;
@@ -657,14 +676,38 @@ a {
 
 	.entry {
 		color: $ux-uisettings-entry-text;
+		position: relative;
+
+		&::after {
+			position: absolute;
+			display: block;
+			transition: 0.3s height, 0.3s top;
+			
+			left: 0%;
+			top: 50%;
+			height: 0%;
+			width: 4px;
+			border-radius: 4px;
+
+			background-color: $ux-uisettings-entry-bg-select;
+			content: '';
+		}
 
 		&:hover {
-			color: $ux-uisettings-entry-text-hover;
+			background-color: rgba(255,255,255,5%);
 		}
 
 		&.select {
-			color: $ux-uisettings-entry-text-select;
-			background-color: $ux-uisettings-entry-bg-select;
+			background-color: rgba(255,255,255,5%);
+
+			.iconify {
+				color: $ux-uisettings-entry-bg-select;
+			}
+
+			&::after {
+				height: 50%;
+				top: 25%;
+			}
 		}
 	}
 }
