@@ -1,0 +1,701 @@
+
+@use "kyoto-colors" as *;
+
+#error_wrapper {
+	color: $ui-errw-text;
+	background-color: $ui-errw-bg;
+}
+
+#announcement_title .iconify {
+	color: $ui-errw-icon;
+}
+
+#notification_wrapper {
+	color: white;
+}
+
+.ux_textbox_label {
+	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
+}
+
+.ux_textbox_container {
+	background-color: $ux-textbox-bg;
+	input {
+		color: $ux-textbox-text;
+	}
+}
+
+.ux_textbox_container_icon {
+	.iconify {
+		color: $ux-textbox-icon;
+	}
+}
+
+.ux_button {
+	color: $ux-button-label;
+	background-color: $ux-button-bg;
+	box-shadow: $ux-box-shadow;
+
+	border: 1px solid;
+	border-top-color: #3f3f3f;
+	border-left-color: #3a3a3a;
+	border-right-color: #3a3a3a;
+	border-bottom-color: #393a3d;
+
+	&:hover {
+		background-color: $ux-button-bg-h;
+	}
+
+	&:active {
+		color: adjust-color($ux-button-label, $alpha: -0.5%);
+		background-color: $ux-button-bg-p;
+	}
+
+	&.disabled {
+		color: adjust-color($ux-button-label, $alpha: -0.5%);
+		background-color: $ux-button-bg-p;
+
+		&:hover {
+		}
+	
+		&:active {
+		}
+	}
+}
+
+.ux_checkbox {
+	.iconify {
+		color: $ux-checkbox-icon;
+	}
+
+	.description {
+		color: gray;
+	}
+
+	&.checked {
+		.ux_checkbox_check {
+			background-color: $ux-checkbox-checked-bg;
+		}
+
+		.iconify {
+			color: $ux-checkbox-checked-icon;
+		}
+	}
+}
+
+.ux_checkbox_check {
+	border: $ux-checkbox-border;
+	background-color: $ux-checkbox-bg;
+}
+
+.ux_checkbox_label {
+	color: $ux-checkbox-label;
+}
+
+.ux_slider_label, .ux_slider_preview {
+	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
+}
+
+.ux_slider_control {
+	&::-webkit-slider-thumb {
+		background: $ui-tx-color;
+	}
+}
+
+.ux_dropdown_control {
+	.selector {
+		color: $ux-dropdown-text;
+		background-color: $ux-dropdown-bg;
+		box-shadow: $ux-dropdown-shadow;
+
+		.list {
+			background-color: $ux-dropdown-bg;
+			box-shadow: $ux-dropdown-shadow;
+		}
+	}
+}
+
+.ux_dropdown_label {
+	color: $ux-textbox-label;
+
+	.description {
+		color: gray;
+	}
+}
+
+.tree {
+	.node {
+		.contents {
+			opacity: 60%;
+			transition: 0.3s opacity;
+
+			&:hover {
+				opacity: 100%;
+				background-color: rgba(255, 255, 255, 20%);
+			}
+
+			&:active {
+				transition: none;
+				opacity: 60%;
+			}
+		}
+	}
+}
+
+.ux_context {
+	background-color: $ux-context-bg;
+	color: $ux-context-text;
+	box-shadow: $ux-context-shadow;
+	
+	.entry:hover {
+		opacity: 100%;
+	}
+}
+
+#ban_bar {
+	background-color: $ui-ban-bg;
+}
+
+#ban_desc {
+	color: $ui-ban-ver;
+
+	#super {
+		color: $ui-ban-sup;
+	}
+}
+
+#ban_controls {
+	color: $ui-ban-ctl-icon;
+}
+
+.ban_control {
+	&:hover {
+		background-color: $ui-ban-ctl-bg-hover;
+	}
+
+	&:active {
+		background-color: $ui-ban-ctl-bg-press;
+	}
+}
+
+#ban_control_close {
+	&:hover {
+		background-color: $ui-ban-ctl-cbg-hover;
+	}
+
+	&:active {
+		background-color: $ui-ban-ctl-cbg-press;
+	}
+}
+
+#language_wrapper {
+	#bar {
+		background-color: $ui-bg-color;
+	}
+}
+
+#nav_bar {
+	background-color: transparent;
+
+	&.vertical {
+		background-color: $ui-nav-bg;
+
+		.nav_entry {
+			background-color: transparent;
+			&:hover { 
+				.iconify {
+					color: $ui-nav-ico-sel;
+				}
+			}
+
+			&.selected {
+				background-color: $ui-nav-bg-sel;
+			}
+		}
+	}
+}
+
+.nav_entry {
+	background-color: transparent;
+
+	.iconify {
+		color: $ui-nav-ico-rst;
+	}
+
+	.caption {
+		color: $ui-nav-ico-rst;
+	}
+
+	.label {
+		color: $ui-nav-lbl-txt;
+		background-color: $ui-nav-lbl-bg;
+		box-shadow: $ui-nav-lbl-shadow;
+	}
+
+	.selectbar {
+		background-color: $ui-nav-ico-rst;
+	}
+
+	&:hover {
+		.iconify {
+			color: $ui-nav-ico-sel;
+		}
+
+		.caption {
+			color: $ui-nav-ico-sel;
+		}
+	}
+
+	&.selected {
+		background-color: transparent;
+
+		.iconify {
+			color: $ui-nav-ico-sel;
+		}
+		
+		.caption {
+			color: $ui-nav-ico-sel;
+		}
+	}
+}
+
+.page_container {
+	color: $ui-tx-color;
+}
+
+.page_ux_box {
+	color: $ux-box-txt;
+	background: $ux-box-bg;
+	border: $ux-box-border;
+	box-shadow: $ux-box-shadow;
+}
+
+#ux_interface_add_tab {
+	&:hover {
+		background-color: $ux-editor-stab-bg;
+	}
+}
+
+.ux_interface_tab {
+	background-color: $ux-editor-tab-bg;
+
+	&:hover {
+		background-color: adjust-color($ux-editor-stab-bg, $lightness: -10%);
+	}
+
+	&.selected {
+		background-color: $ux-editor-stab-bg;
+	}
+}
+
+
+.page_column.editor_container {
+    border-bottom-color: $ux-editor-border-bg;
+}
+
+#ux_interface_editor {
+    border-right-color: $ux-editor-border-bg;
+}
+
+.editor-sidebar-category {
+	.category-caption {
+		background-color: $ux-editor-file-category;
+	}
+
+	.entry {
+		opacity: 60%;
+		transition: 0.3s opacity;
+
+		&:hover {
+			opacity: 100%;
+			background-color: rgba(255, 255, 255, 20%);
+		}
+
+		&:active {
+			transition: none;
+			opacity: 60%;
+		}
+
+		.caption {
+			background-color: transparent;
+		}
+	}
+}
+
+.ux_interface_action_imgbutton {
+	color: $ux-editor-imgbutton-color;
+
+	&:hover {
+		color: $ux-editor-imgbutton-hover-color;
+	}
+}
+
+#console_actions {
+	background-color: $ui-nav-bg;
+}
+
+#console_output {
+	background-color: adjust-color($ui-nav-bg, $lightness: -5%);
+}
+
+#captcha_screen {
+	background-color: transparent;
+}
+
+#login_buttons .ux_button {
+	background-color: $ui-login-ctl-bg;
+}
+
+#username_box .ux_textbox_container, #password_box .ux_textbox_container, #r_email_box .ux_textbox_container, #r_license_box .ux_textbox_container, #passwordconfirm_box .ux_textbox_container, #r_license_codon0, #r_license_codon1, #r_license_codon2, #r_license_codon3, #r_license_codon4 {
+	background-color: $ui-login-ctl-bg;
+}
+
+.login_corner_entry {
+	color: $ui-login-corner-icon-color;
+}
+
+.ux_update_box {
+	background-color: $ui-ban-bg;
+}
+
+.ux_account_login_log {
+	background-color: $ui-ban-bg;
+}
+
+#oobe_container {
+	color: $ui-tx-color;
+	background-color: $ui-bg-color;
+}
+
+// usage of mixins requires this to be in the impl
+#changelog {
+	margin-left: 10px;
+	margin-top: 10px;
+	.entry {
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-left-color: gray;
+		padding-bottom: 20px;
+
+		.title {
+			@mixin dotentry($dotcolor) {
+				color: $ui-tx-color;
+				font-weight: bold;
+
+				&::before {
+					display: inline-block;
+					content: '';
+					background-color: $dotcolor;
+					//border-radius: 50%;
+					width: 0.5em;
+					height: 0.5em;
+					transform: translateX(-54%);
+				}
+			}
+
+			@mixin badgeentry($text, $color) {
+				&::after {
+					display: inline-block;
+					content: to-upper-case($text);
+					margin-left: 0.5em;
+					font-size: 0.6em;
+					color: $ui-tx-color;
+					background-color: $color;
+					padding: 0.4em;
+				}
+			}
+
+			display: flex;
+			align-items: center;
+			color: $ui-tx-color;
+			font-size: 1.5em;
+			transform: translateY(-50%);
+			line-height: 0.7;
+
+			&.current {
+				@include dotentry($color-success);
+				@include badgeentry('current', $color-success);
+			}
+
+			&.previous {
+				@include dotentry($color-warning);
+			}
+
+			&.upcoming {
+				@include dotentry(gray);
+				@include badgeentry('upcoming', gray);
+				color: gray;
+			}
+		}
+
+		.content {
+			color: $ui-changelog-content-text;
+			padding-left: 10px;
+			margin: 0;
+
+			.change {
+				display: flex;
+				align-items: center;
+
+				@mixin chgentry($dotcolor, $symbol) {
+					&::before {
+						font-family: monospace;
+						display: flex;
+						content: $symbol;
+						border-color: $dotcolor;
+						border-style: solid;
+						border-width: 1px;
+						color: $dotcolor;
+						width: 1em;
+						height: 1em;
+						margin-right: 5px;
+						align-items: center;
+						justify-content: center
+					}
+				}
+
+				&.addition {
+					@include chgentry($color-success, '+');
+				}
+
+				&.subtraction {
+					@include chgentry($color-warning, '-');
+				}
+
+				&.fix {
+					@include chgentry($color-info, '~');
+				}
+			}
+		}
+	}
+}
+
+a {
+	color: $ui-link-color;
+}
+
+#syn_app {
+	background-color: $ui-bg-color;
+}
+
+.notification {
+	&.info { background-color: $color-primary; }
+	&.success { background-color: $color-success; }
+	&.warning { background-color: $color-warning; color: #222324; }
+	&.danger { background-color: $color-danger; }
+}
+
+#update_wrapper {
+	color: $ux-update-text;
+
+	#update_box {
+		background-color: $ui-bg-color;
+
+		#update_text {
+			color: $ux-update-text;
+		}
+
+		#update_progress {
+			color: $ux-update-progress-text;
+			background-color: $color-success;
+
+			&.has_error {
+				color: black;
+				background-color: $color-danger;
+			}
+		}
+	}
+}
+
+#update_changelog_wrapper {
+	#update_changelog_box {
+		background-color: $ui-ban-bg;
+		color: $ui-tx-color;
+
+		.title {
+			background-color: $ui-nav-bg;
+		}
+	}
+}
+
+#package-screen {
+	#package-banner {
+		background-color: $ux-package-banner-bg;
+
+		#package-title {
+			color: $ux-package-title;
+		}
+
+		#package-controls {
+			#package-btn {
+				color: $ux-package-button-text;
+
+				&.available {
+					background-color: $ux-package-button-install;
+				}
+
+				&.installed {
+					background-color: $ux-package-button-run;
+				}
+
+				&.outdated {
+					background-color: $ux-package-button-update;
+				}
+
+				&.downloading {
+					background-color: transparent;
+					border: 1px solid white;
+					opacity: 50%;
+					cursor: not-allowed;
+				}
+
+				&:active {
+					opacity: 50%;
+				}
+			}
+		}
+	}
+}
+
+#package-description {
+	color: $ux-package-description-txt;
+}
+
+#package-list {
+	.package-entry {
+		background-color: $ux-package-entry-bg;
+	}
+}
+
+#theme-options {
+	.option {
+		background-color: $ux-button-bg;
+	}
+}
+
+.page-list {
+	color: $ui-tx-color;
+	.entry-button, .entry-list-header {
+		background-color: $ux-pagelist-button-bg;
+		color: $ux-pagelist-button-text;
+
+		.details {
+			color: $ux-pagelist-details-text;
+			.title { color: $ux-pagelist-button-text; }
+			.description { color: lightgray; }
+			.arrow { color: $ux-pagelist-button-text; }
+		}
+
+		&:hover {
+			background-color: $ux-pagelist-button-hover-bg;
+		}
+
+		&:active {
+			background-color: $ux-pagelist-button-press-bg;
+		}
+	}
+
+	.entry-list {
+		.entry {
+			background-color: $ux-pagelist-button-bg;
+			color: $ux-pagelist-button-text;
+		}
+	}
+}
+
+#ux_modules {
+	.module-entry {
+		color: $ux-box-txt;
+		background: $ux-box-bg;
+		border: $ux-box-border;
+		box-shadow: $ux-box-shadow;
+
+		.module-title {
+			color: white;
+			.module-id {
+				color: gray;
+			}
+		}
+	}
+}
+
+.remote-body {
+	color: $ui-tx-color;
+	background-color: $ui-bg-color;
+
+	.remote-header {
+		background-color: $ui-ban-ctl-bg-hover;
+	}
+}
+
+.ux_dialog {
+	background-color: $ux-dialog;
+	color: $ux-dialog-text;
+
+	.title {
+		//background-color: $ux-dialog-title;
+	}
+
+	.actions {
+		background-color: $ux-dialog-actions;
+	}
+}
+
+.ux-uisettings-list {
+	background-color: $ux-uisettings-bar;
+	
+	.entry-label {
+		background-color: $ux-textbox-bg;
+	}
+
+	.entry {
+		color: $ux-uisettings-entry-text;
+		position: relative;
+
+		&::after {
+			position: absolute;
+			display: block;
+			transition: 0.3s height, 0.3s top;
+			
+			left: 0%;
+			top: 50%;
+			height: 0%;
+			width: 4px;
+			border-radius: 4px;
+
+			background-color: $ux-uisettings-entry-bg-select;
+			content: '';
+		}
+
+		&:hover {
+			background-color: rgba(255,255,255,5%);
+		}
+
+		&.select {
+			background-color: rgba(255,255,255,5%);
+
+			.iconify {
+				color: $ux-uisettings-entry-bg-select;
+			}
+
+			&::after {
+				height: 50%;
+				top: 25%;
+			}
+		}
+	}
+}
+
+.ux-uisettings-pages {
+	.category-label {
+		background-color: $ux-textbox-bg;
+	}
+}

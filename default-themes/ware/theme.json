@@ -1,0 +1,11 @@
+{
+    "id": "ware",
+    "name": "Ware",
+    "stylesheet": true,
+    "editor": "synapse-dark",
+    "settingOverrides": {
+        "verticalnav": true,
+        "verticalnavcenter": true,
+        "squaretabs": true
+    }
+}

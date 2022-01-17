@@ -1,0 +1,12 @@
+{
+    "id": "hollywood-classic",
+    "name": "Hollywood Classic",
+    "stylesheet": true,
+    "editor": "synapse-dark",
+    "settingOverrides": {
+        "squaretabs": true,
+        "flipbtns": true,
+        "classiclayout": true,
+        "verticalnav": false
+    }
+}
