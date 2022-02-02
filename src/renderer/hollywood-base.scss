@@ -507,17 +507,30 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		padding: 0.5em;
 		border-radius: 4px;
 
+		&.show {
+			.iconify {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		&:active {
+			.iconify {
+				opacity: 50%;
+			}
+		}
+
 		.item {
 			flex-grow: 2;
 		}
 
 		.iconify {
 			margin-left: auto;
+			transition: 157ms transform;
 		}
 
 		.list {
 			position: absolute;
-			display: none;
+			display: flex; // none;
 			flex-direction: column;
 			border-radius: 4px;
 			left: 0em;
@@ -525,9 +538,10 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			max-height: 20em;
 			overflow-y: scroll;
 			z-index: 50; //:atroll:
+			backdrop-filter: blur(20px);
 
 			&.show {
-				display: flex;
+				//display: flex;
 			}
 
 			.category {
@@ -627,6 +641,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	animation: append-show .1s linear;
 	white-space: nowrap;
 	z-index: 200;
+	backdrop-filter: blur(20px);
 
 	&.show {
 		opacity: 1;
@@ -1550,7 +1565,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 			align-items: center;
 			padding: 3px;
 
-			.refresh {
+			.category-button {
 				margin-left: auto;
 				cursor: pointer;
 
@@ -1639,6 +1654,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	align-items: center;
 	height: 100%;
 	//width: 200px;
+	padding-left: 5px;
 	gap: 5px;
 }
 
@@ -1647,19 +1663,18 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	justify-content: center;
 	align-items: center;
 	height: 28px;
-	width: 28px;
+	max-width: 28px;
 	font-size: 100%;
 	border-radius: 14px;
 	cursor: pointer;
 	color: transparent;
+	white-space: nowrap;
+	transition: 157ms color;
 
 	&:hover {
-		padding-left: 10px;
-		padding-right: 10px;
-		width: fit-content;
+		//width: fit-content;
 		color: black;
 		filter: brightness(85%);
-		width: fit-content;
 	}
 
 	&:active {
@@ -1757,7 +1772,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		flex-grow: 2;
 		gap: 0.3em;
 		padding: 0.3em;
-		overflow-x: hidden;
+		overflow-x: auto;
 		overflow-y: auto;
 
 		.log {
@@ -1840,8 +1855,8 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
 	width: 25%;
-	//padding: 0.5em;
-	//gap: 0.3em;
+	padding: 0.5em;
+	gap: 0.5em;
 	overflow-y: scroll;
 	box-shadow: 1px 0px 8px rgb(0 0 0 / 50%);
 
@@ -1849,13 +1864,25 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		display: none;
 	}
 
+	.user-information {
+		display: flex;
+		flex-direction: column;
+		background-position: right;
+		background-repeat: no-repeat;
+
+		.username {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+
+		.registration {
+			font-size: 0.8em;
+			opacity: 50%;
+		}
+	}
+
 	#settings-search {
-		/*
-		position: absolute;
-		top: calc(100% - 2.5em);
-		margin: 0.3em;
-		width: calc(100% - 0.5em);
-		*/
+		//padding: 0.2em;
 	}
 
 	.entry-label {
@@ -1867,7 +1894,7 @@ $ux-font: 'Segoe UI Variable', 'Segoe UI', 'Open Sans', sans-serif;
 		align-items: center;
 		gap: 0.5em;
 
-		margin: 0.2em;
+		//margin: 0.2em;
 		padding: 0.5em;
 		border-radius: 4px;
 

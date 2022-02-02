@@ -75,7 +75,7 @@ $ux-dropdown-bg: $ux-textbox-bg;
 $ux-dropdown-text: $ux-textbox-label;
 $ux-dropdown-shadow: 0px 1px 5px rgba(0,0,0,30%);
 
-$ux-context-bg: $ui-bg-color;
+$ux-context-bg: adjust-color($ui-bg-color, $alpha: -0.5);
 $ux-context-text: $ui-tx-color;
 $ux-context-shadow: 0px 1px 5px rgba(0,0,0,30%);
 
@@ -165,7 +165,11 @@ $ux-editor-imgbutton-hover-color: white;
 }
 
 #ux_interface_file_list {
-    //border-top: 1px solid $ui-tx-color;
+    .editor-sidebar-category {
+        .category-caption {
+            color: black;
+        }
+    }
 }
 
 /* ==== Package Manager UX ==== */

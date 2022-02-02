@@ -91,7 +91,6 @@
     "list.inactiveSelectionBackground": "#cfebfd14",
     "list.inactiveSelectionForeground": "#e6e6e6",
     "list.warningForeground": "#fab763",
-
     "merge.currentContentBackground": "#fab76340",
     "merge.currentHeaderBackground": "#fab76370",
     "merge.incomingContentBackground": "#a3ce9e40",

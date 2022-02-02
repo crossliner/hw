@@ -55,11 +55,11 @@ $ux-checkbox-checked-bg: #60cdff;
 $ux-checkbox-checked-icon: $ux-checkbox-bg;
 $ux-checkbox-label: $ux-button-label;
 
-$ux-dropdown-bg: $ux-textbox-bg;
+$ux-dropdown-bg: adjust-color($ux-textbox-bg, $alpha: -0.5);
 $ux-dropdown-text: $ux-textbox-label;
 $ux-dropdown-shadow: 0px 1px 5px rgba(0,0,0,30%);
 
-$ux-context-bg: $ui-bg-color;
+$ux-context-bg: adjust-color($ui-bg-color, $alpha: -0.5);
 $ux-context-text: $ui-tx-color;
 $ux-context-shadow: 0px 1px 5px rgba(0,0,0,30%);
 
